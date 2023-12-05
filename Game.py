@@ -24,12 +24,12 @@ def game():
            [w, p, p, p, p, p, p, p, p, p, p, p, p, p, w],
            [w, w, w, w, w, w, w, w, w, w, w, w, w, w, w]]
 
-    you_lose = '''╔╗  ╔╗╔═══╗╔╗ ╔╗     ╔╗   ╔═══╗╔═══╗╔═══╗
-║╚╗╔╝║║╔═╗║║║ ║║     ║║   ║╔═╗║║╔═╗║║╔══╝
-╚╗╚╝╔╝║║ ║║║║ ║║     ║║   ║║ ║║║╚══╗║╚══╗
- ╚╗╔╝ ║║ ║║║║ ║║     ║║ ╔╗║║ ║║╚══╗║║╔══╝
-  ║║  ║╚═╝║║╚═╝║     ║╚═╝║║╚═╝║║╚═╝║║╚══╗
-  ╚╝  ╚═══╝╚═══╝     ╚═══╝╚═══╝╚═══╝╚═══╝'''
+    you_lose = '''            ╔╗  ╔╗╔═══╗╔╗ ╔╗     ╔╗   ╔═══╗╔═══╗╔═══╗
+            ║╚╗╔╝║║╔═╗║║║ ║║     ║║   ║╔═╗║║╔═╗║║╔══╝
+            ╚╗╚╝╔╝║║ ║║║║ ║║     ║║   ║║ ║║║╚══╗║╚══╗
+             ╚╗╔╝ ║║ ║║║║ ║║     ║║ ╔╗║║ ║║╚══╗║║╔══╝
+              ║║  ║╚═╝║║╚═╝║     ║╚═╝║║╚═╝║║╚═╝║║╚══╗
+              ╚╝  ╚═══╝╚═══╝     ╚═══╝╚═══╝╚═══╝╚═══╝'''
 
     difficulty = int(input('''      Выберете уровень сложности:
         1 - EASY,
@@ -78,6 +78,11 @@ def game():
             print(you_lose)
             break
 
+        if snake_siments[-1] in snake_siments[1:len(snake_siments) - 1]:
+            print()
+            print(you_lose)
+            break
+
         if prx == applex and pry == appley:
             map[appley][applex] = p
             zn = [x for x in sp if x not in snake_siments]
@@ -106,11 +111,6 @@ def game():
         for sx, sy in snake_siments:
             map[sy][sx] = p
         time.sleep(1 / difficulty)
-
-        if snake_siments[-1] in snake_siments[1:len(snake_siments) - 1]:
-            print()
-            print(you_lose)
-            break
 
         if keyboard.is_pressed('a'):
             if kl == 'd':
